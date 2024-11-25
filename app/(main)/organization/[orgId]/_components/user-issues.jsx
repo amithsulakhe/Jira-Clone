@@ -6,14 +6,14 @@ import { getUserIssues } from "@/actions/issues";
 export default async function UserIssues({ userId }) {
   const issues = await getUserIssues(userId);
 
-  if (issues.length === 0) {
+  if (issues?.length === 0) {
     return null;
   }
 
-  const assignedIssues = issues.filter(
+  const assignedIssues = issues?.filter(
     (issue) => issue.assignee.clerkUserId === userId
   );
-  const reportedIssues = issues.filter(
+  const reportedIssues = issues?.filter(
     (issue) => issue.reporter.clerkUserId === userId
   );
 
